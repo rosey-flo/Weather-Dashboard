@@ -1,19 +1,18 @@
 ## Description
 <p>
-  This project is a javascript demonstration illustrating a scenario in which a program was required that could store user data via input and compile a specifed list and functions for calculations. 
+  This project is a Jquery and Web API call demonstration to showcase an application allowing a user to select a city and get the current weather along with a 5 day-day forecast with data that was extracted the the API Open Weather Map.
   <li>Codes Used:
-    <ul>- Java Scipt</ul>
+    <ul>- JQuery</ul>
     <ul>- HTML</ul>
     <ul>- CSS</ul>
   </li>
   <li>Features Used:
-    <ul>- Loops</ul>
-    <ul>- Variables</ul>
     <ul>- Functions</ul>
-    <ul>- Conditionals</ul>
-    <ul>- Browser User Interface</ul>
+    <ul>- Filters to aggregate date via time of day</ul>
+    <ul>- For Each Functions</ul>
+    <ul>- API calls</ul>
+    <ul>- Event listeners and calls</ul>
   </li>
-  The live website we worked on can be found here as well as in this repository in the Develop Folder as index.html.
 </p>
 
 ## Visuals
@@ -24,15 +23,15 @@
 ## Installation
 <li>Programs Used:
   <ul>VS Studio</ul>
-  <ul>Github</ul>
-  <ul>Command terminal</ul>
+  <ul>Jquery | Jquery CDN</ul>
+  <ul>Bootstrap CSS Editor</ul>
 </li>
 
 ## Usage
-In the example video included, it is a dmeonstration of the website while a live use, in this case myself, used the program to input 4 "Employees" into my browser user interface and resulted in a table list of the array of the employees I entered followed by the console view of my website to show that the program had also created the average of the salaries inputs and chose a random employee in this round. 
+For this Web Application, the webpage offers two options for the user and is further assisted with a text box indiciting the two options the user has. The first option is to choose form the pre-selected list of major cities for fast access. The next is the option to use the input text box and indicate which city they would like to get a weather forecast of. Once the city is clicked or input city is submited, event listeners will appropriately trigger the folling functions necessary to diplay the current weather and 5 day forecast for the city of choice selected by the user.
 
 ## Authors and acknowledgment
-Rutgers Bootcamp base code provided
+Possible with the API usage of OpenWeatherMaps API
 
 ## License
 MIT liscence
