@@ -4,10 +4,6 @@ const $submitBtn = $('.submit-btn');
 const $cityBtns = $('.city-btns .btn')
 
 
-// const preSelectedCities = ['Atlanta', 'Denver', 'Seattle', 'San Francisco', 'Orlando', 'New York', 'Chicago', 'Austin']
-
-
-
 function getSelectedCity(cityName) {
   const cityURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
 
@@ -22,7 +18,6 @@ function outputCurrentWeather(currentData) {
             <p>Temp: ${currentData.main.temp} &deg;</p>
             <p>Wind: ${currentData.wind.speed}</p>
             <p>Humidity: ${currentData.main.humidity}</p>
-            
         `)
 
   return currentData.coord;
@@ -30,10 +25,9 @@ function outputCurrentWeather(currentData) {
 
 function getForecastedWeather(locationData) {
   const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${locationData.lat}&lon=${locationData.lon}&appid=${apiKey}&units=imperial`;
- 
+
   return $.get(forecastURL);
 }
-
 
 function outputForecastReport(WeatherData) {
   const $forecastOutput = $('.forecast-container');
@@ -47,7 +41,7 @@ function outputForecastReport(WeatherData) {
   filtered.forEach(function (weatherObj) {
     const date = new Date(weatherObj.dt_txt);
     const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-    
+
     $forecastOutput.append(`
             <div class="card-body">
               <p><strong>${formattedDate}</strong></p>
@@ -66,7 +60,7 @@ $cityBtns.on('click', function () {
     .then(outputCurrentWeather)
     .then(getForecastedWeather)
     .then(outputForecastReport);
-  });
+});
 
 $submitBtn.on('click', function () {
   const cityName = $cityInput.val();
