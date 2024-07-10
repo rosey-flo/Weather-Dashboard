@@ -1,10 +1,16 @@
 const $cityInput = $('.city-input');
 const apiKey = '0b2d18998cc2c1478342de38040d8e6f';
 const $submitBtn = $('.submit-btn');
+const $cityBtns = $('.city-btns .btn')
+
+
+// const preSelectedCities = ['Atlanta', 'Denver', 'Seattle', 'San Francisco', 'Orlando', 'New York', 'Chicago', 'Austin']
+
+
 
 function getSelectedCity(cityName) {
   const cityURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
-  console.log(cityURL)
+
   return $.get(cityURL)
 }
 
@@ -36,9 +42,12 @@ function outputForecastReport(WeatherData) {
     if (weatherObj.dt_txt.includes('12:00')) return true;
   });
 
+  $forecastOutput.empty(); // Clear previous forecasts
+
   filtered.forEach(function (weatherObj) {
     const date = new Date(weatherObj.dt_txt);
     const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    
     $forecastOutput.append(`
             <div class="card-body">
               <p><strong>${formattedDate}</strong></p>
@@ -50,6 +59,14 @@ function outputForecastReport(WeatherData) {
           `)
   })
 }
+
+$cityBtns.on('click', function () {
+  const cityName = $(this).text().toLowerCase(); // Extract city name from button text
+  getSelectedCity(cityName)
+    .then(outputCurrentWeather)
+    .then(getForecastedWeather)
+    .then(outputForecastReport);
+  });
 
 $submitBtn.on('click', function () {
   const cityName = $cityInput.val();
